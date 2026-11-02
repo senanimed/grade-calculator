@@ -1,6 +1,6 @@
 import pytest
 
-from calculator import calculate_average, is_passing
+from calculator import calculate_average, get_grade_category, is_passing
 
 
 def test_calculate_average():
@@ -15,3 +15,10 @@ def test_is_passing():
 def test_empty_grades():
     with pytest.raises(ValueError):
         calculate_average([])
+
+
+def test_grade_categories():
+    assert get_grade_category(17) == "Excellent"
+    assert get_grade_category(13) == "Good"
+    assert get_grade_category(10.5) == "Average"
+    assert get_grade_category(7) == "Fail"
